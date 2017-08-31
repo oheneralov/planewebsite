@@ -19,32 +19,26 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class cucumberJava 
+public class StepsDefinition 
     
 {
 	WebDriver driver = null;
-	 HomePage homepage = null;
+    HomePage homepage = null;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( cucumberJava.class );
-    }
     
     public void setUp() throws Exception {
-    	System.setProperty("webdriver.gecko.driver", "C://alex//selenium//geckodriver-v0.18.0-win64//geckodriver.exe");
-		driver = new ChromeDriver();
+    	
     }
     
-    @Given("^I have open the browser and main page$")
+    @Given("^I have open the browser$")
     public void openMainPage() {
+    	System.setProperty("webdriver.chrome.driver", "C:\\alex\\training\\java\\chromedriver_win32\\chromedriver.exe");
+  	    driver = new ChromeDriver();
     	homepage = PageFactory.initElements(driver, HomePage.class);
         homepage.open(driver, Config.baseURL);
     }
 
-    @Then ("^baseURL should be http://localhost:8080/simulator$")
+    @Then("^baseURL should be http://localhost:8080/simulator$")
     public void testMainPage()
     {
     	if(Config.baseURL == homepage.getCurrentUrl()) { 

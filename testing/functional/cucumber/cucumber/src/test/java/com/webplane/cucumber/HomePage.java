@@ -35,7 +35,11 @@ public class HomePage {
 
 	public void open(WebDriver driver, String url) {
 		this.driver = driver;
-		this.driver.get(url);
+		System.out.printf("The url is %s",url);
+		if (driver != null) {
+			this.driver.get(url);
+		}
+		
 
 	}
 	
