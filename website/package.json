@@ -1,0 +1,16 @@
+{
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "web site",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "author": "Oleksandr Generalov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "multer": "^1.3.0"
+  }
+}
