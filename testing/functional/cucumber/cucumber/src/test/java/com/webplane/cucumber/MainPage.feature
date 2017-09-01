@@ -1,5 +1,5 @@
-Feature: CucumberJava
+Feature: Main Page of the web site
 
-Scenario: Main page loaded
+Scenario: Verify home page
 Given I have open the browser
 Then baseURL should be http://localhost:8080/simulator

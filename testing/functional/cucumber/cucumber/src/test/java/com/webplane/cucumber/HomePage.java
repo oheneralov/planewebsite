@@ -22,6 +22,21 @@ import org.openqa.selenium.TakesScreenshot;
  *
  */
 public class HomePage {
+	public WebElement getHomeTopLink() {
+		return homeTopLink;
+	}
+
+
+	public WebElement getSimulatorTopLink() {
+		return simulatorTopLink;
+	}
+
+
+	public WebElement getTheoryTopLink() {
+		return theoryTopLink;
+	}
+
+
 	@FindBy(how=How.LINK_TEXT,using="Home")
 	WebElement homeTopLink;
 	
@@ -35,11 +50,7 @@ public class HomePage {
 
 	public void open(WebDriver driver, String url) {
 		this.driver = driver;
-		System.out.printf("The url is %s",url);
-		if (driver != null) {
-			this.driver.get(url);
-		}
-		
+		this.driver.get(url);
 
 	}
 	
@@ -50,5 +61,4 @@ public class HomePage {
 	public String getTitle() {
 		return this.driver.getTitle();
 	}
-
 }

@@ -10,8 +10,8 @@ import com.webplane.cucumber.HomePage;
 
 import cucumber.annotation.en.Given; 
 import cucumber.annotation.en.Then; 
-import cucumber.annotation.en.When; 
-
+import cucumber.annotation.en.When;
+import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -41,15 +41,17 @@ public class StepsDefinition
     @Then("^baseURL should be http://localhost:8080/simulator$")
     public void testMainPage()
     {
-    	if(Config.baseURL == homepage.getCurrentUrl()) { 
-            System.out.println("Test 1 Pass"); 
-         } else { 
-            System.out.println("Test 1 Fail"); 
-         } 
+    	Assert.assertEquals(Config.baseURL, homepage.getCurrentUrl() );
+    	Assert.assertEquals("Home", homepage.getTitle());
+    	Assert.assertEquals(Config.homeTopLinkText, homepage.getHomeTopLink().getText());
+    	Assert.assertEquals(Config.simulatorTopLinkText, homepage.getSimulatorTopLink().getText());
+    	Assert.assertEquals(Config.theoryTopLinkText, homepage.getTheoryTopLink().getText());
+        //testing link url
+    	Assert.assertEquals(Config.homeTopLinkURL, homepage.getHomeTopLink().getAttribute("href"));
+    	Assert.assertEquals(Config.simulatorTopLinkURL, homepage.getSimulatorTopLink().getAttribute("href"));
+    	Assert.assertEquals(Config.theoryTopLinkURL, homepage.getTheoryTopLink().getAttribute("href"));;
+    	driver.close();
        
     }
     
-    public void tearDown() {
-    	driver.quit();
-    }
 }
