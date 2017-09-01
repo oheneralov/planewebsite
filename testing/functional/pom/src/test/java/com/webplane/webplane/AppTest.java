@@ -39,15 +39,23 @@ public class AppTest
 		driver = new FirefoxDriver();
     }
 
-    /**
-     * Rigourous Test :-)
-     */
     public void testMainPage()
     {
         HomePage homepage = PageFactory.initElements(driver, HomePage.class);
         homepage.open(driver, Config.baseURL);
         assertEquals(Config.baseURL, homepage.getCurrentUrl());
-        assertEquals("", homepage.getTitle());
+        assertEquals("Home", homepage.getTitle());
+        assertEquals(Config.homeTopLinkText, homepage.getHomeTopLink().getText());
+        assertEquals(Config.simulatorTopLinkText, homepage.getSimulatorTopLink().getText());
+        assertEquals(Config.theoryTopLinkText, homepage.getTheoryTopLink().getText());
+        //testing link url
+        assertEquals(Config.homeTopLinkURL, homepage.getHomeTopLink().getAttribute("href"));
+        assertEquals(Config.simulatorTopLinkURL, homepage.getSimulatorTopLink().getAttribute("href"));
+        assertEquals(Config.theoryTopLinkURL, homepage.getTheoryTopLink().getAttribute("href"));
+    }
+    
+    public void testSimulatorPage() {
+    	
     }
     
     public void tearDown() {

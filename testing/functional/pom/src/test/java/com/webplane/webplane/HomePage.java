@@ -22,6 +22,21 @@ import org.openqa.selenium.TakesScreenshot;
  *
  */
 public class HomePage {
+	public WebElement getHomeTopLink() {
+		return homeTopLink;
+	}
+
+
+	public WebElement getSimulatorTopLink() {
+		return simulatorTopLink;
+	}
+
+
+	public WebElement getTheoryTopLink() {
+		return theoryTopLink;
+	}
+
+
 	@FindBy(how=How.LINK_TEXT,using="Home")
 	WebElement homeTopLink;
 	
