@@ -1,5 +1,6 @@
 package com.webplane.webplane;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -20,6 +21,7 @@ public class AppTest
      * @param testName name of the test case
      */
 	WebDriver driver = null;
+	HomePage homepage;
 	
     public AppTest( String testName )
     {
@@ -37,25 +39,35 @@ public class AppTest
     public void setUp() throws Exception {
     	System.setProperty("webdriver.gecko.driver", "C://alex//selenium//geckodriver-v0.18.0-win64//geckodriver.exe");
 		driver = new FirefoxDriver();
+		homepage = PageFactory.initElements(driver, HomePage.class);
     }
-
-    public void testMainPage()
-    {
-        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
-        homepage.open(driver, Config.baseURL);
-        assertEquals(Config.baseURL, homepage.getCurrentUrl());
+    
+    private void checkMainPage(HomePage homepage) {
+    	assertEquals(Config.baseURL, homepage.getCurrentUrl());
         assertEquals("Home", homepage.getTitle());
         assertEquals(Config.homeTopLinkText, homepage.getHomeTopLink().getText());
         assertEquals(Config.simulatorTopLinkText, homepage.getSimulatorTopLink().getText());
         assertEquals(Config.theoryTopLinkText, homepage.getTheoryTopLink().getText());
-        //testing link url
+        //testing links url
         assertEquals(Config.homeTopLinkURL, homepage.getHomeTopLink().getAttribute("href"));
         assertEquals(Config.simulatorTopLinkURL, homepage.getSimulatorTopLink().getAttribute("href"));
         assertEquals(Config.theoryTopLinkURL, homepage.getTheoryTopLink().getAttribute("href"));
     }
+
+    public void testMainPageLinks()
+    {
+        
+        homepage.open(driver, Config.baseURL);
+        checkMainPage(homepage);
+        //click on the Home link
+        homepage.getHomeTopLink().click();
+        checkMainPage(homepage);
+    }
     
-    public void testSimulatorPage() {
-    	
+    public void testMainPageContent() {
+    	homepage.open(driver, Config.baseURL);
+    	assertEquals("Home", homepage.getContent());
+    	//System.out.println(driver.findElement(By.xpath("")));
     }
     
     public void tearDown() {

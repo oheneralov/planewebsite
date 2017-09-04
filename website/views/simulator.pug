@@ -1,26 +1,13 @@
-<html>
-<head>
-<style>
-.container{
-    display:flex;
-	flex-direction: row;
-}
-
-.menuitem{
-    margin:auto;
-}
-.active{
-    background: green;
-}
-</style>
-</head>
-<body>
-<div class="container">
-	<div class="menuitem"><a href="/">Home</a></div>
-	<div class="menuitem"><a href="/" class="active">Simulator</a></div>
-	<div class="menuitem"><a href="/">Theory</a></div>
-</div>
-Welcome to the simuator!
-</body>
-
-<html>
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/app.css")
+  body
+    div(class="container")
+      div(class="menuitem")
+        a(href="/") Home
+      div(class="menuitem")
+        a(href="/simulator") Simulator
+      div(class="menuitem")
+        a(href="/theory") Theory
+    div= content

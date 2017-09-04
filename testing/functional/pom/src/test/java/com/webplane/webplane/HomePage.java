@@ -61,5 +61,12 @@ public class HomePage {
 	public String getTitle() {
 		return this.driver.getTitle();
 	}
+	
+	
+	@FindBy(how=How.XPATH,using="/html/body/div[last()]")
+	WebElement content;
+	public String getContent() {
+		return content.getText();
+	}
 
 }

@@ -9,15 +9,15 @@ app.use(express.static('public'));
 
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Home'});
+  res.render('index', { title: 'Home', content: 'Home'});
 });
 
 app.get('/simulator', function (req, res) {
-  //res.render('simulator', { title: 'simulator'});
+  res.render('simulator', { title: 'simulator', content: 'simulator'});
 });
 
 app.get('/theory', function (req, res) {
-  //res.render('theory', { title: 'theory'});
+  res.render('theory', { title: 'theory', content: 'theory'});
 });
 
 
