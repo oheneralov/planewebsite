@@ -21,7 +21,6 @@ import org.openqa.selenium.TakesScreenshot;
  * @author oheneralov
  *
  */
-public class HomePage extends DriverUtils {
+public class TheoryPage extends DriverUtils {
 	
-
 }
