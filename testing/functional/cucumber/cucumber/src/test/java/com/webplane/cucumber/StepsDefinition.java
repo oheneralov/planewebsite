@@ -59,12 +59,14 @@ public class StepsDefinition
 		// click on the Home link
 		homePage.getHomeTopLink().click();
 		checkTopMenu(homePage);
+		driver.close();
 	}
     
     
     @Then("^Content of the page should coincide with the one from Config$")
 	public void testMainPageContent() {
 		Assert.assertEquals(Config.HomePage.content, homePage.getContent());
+		driver.close();
 	}
 
 	/**
@@ -82,6 +84,7 @@ public class StepsDefinition
 		Assert.assertEquals(Config.SimulatorPage.baseURL, simulatorPage.getCurrentUrl());
 		Assert.assertEquals("simulator", simulatorPage.getTitle());
 		checkTopMenu(simulatorPage);
+		driver.close();
 	}
     
     @When("^I open simulator page$")
@@ -93,25 +96,38 @@ public class StepsDefinition
 	public void testSimulatorPageContent() {
 		
 		Assert.assertEquals(Config.SimulatorPage.content, simulatorPage.getContent());
+		driver.close();
 	}
 	
 	/**
 	 * Open home page, click on theory top link and check if no errors
 	 */
-	public void testTheoryPageLinks() {
-		theoryPage.open(driver, Config.HomePage.baseURL);
+    @When("^I open home page and click on the theory link$")
+    public void open_home_and_theory_page() {
+    	theoryPage.open(driver, Config.HomePage.baseURL);
 		// click on the simulator link
-		theoryPage.getTheoryTopLink().click();
-		Assert.assertEquals(Config.TheoryPage.baseURL, theoryPage.getCurrentUrl());
-		Assert.assertEquals("theory", theoryPage.getTitle());
+    	theoryPage.getSimulatorTopLink().click();
+    }
+    
+    @Then("^Then theory page current URL, menu and title must be similar to ones from config$")
+	public void testTheoryPageLinks() {
+		Assert.assertEquals(Config.SimulatorPage.baseURL, theoryPage.getCurrentUrl());
+		Assert.assertEquals("simulator", theoryPage.getTitle());
 		checkTopMenu(theoryPage);
+		driver.close();
 	}
+    
+    @When("^I open theory page$")
+    public void open_theory_page() {
+    	theoryPage.open(driver, Config.TheoryPage.baseURL);
+    }
 
+    @Then("^Content of the theory page should coincide with the one from Config$")
 	public void testTheoryPageContent() {
-		theoryPage.open(driver, Config.TheoryPage.baseURL);
+		
 		Assert.assertEquals(Config.TheoryPage.content, theoryPage.getContent());
+		driver.close();
 	}
-
 	private void checkTopMenu(DriverUtils page) {
 		Assert.assertEquals(Config.Menu.homeTopLinkText, page.getHomeTopLink().getText());
 		Assert.assertEquals(Config.Menu.simulatorTopLinkText, page.getSimulatorTopLink().getText());
