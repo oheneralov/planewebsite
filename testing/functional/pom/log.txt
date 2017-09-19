@@ -1,0 +1,12 @@
+2017-09-19 13:52:00,388 INFO  [main] All classes initialized
+2017-09-19 13:52:00,422 INFO  [main] Testing theory page links
+2017-09-19 13:52:46,709 INFO  [main] All classes initialized
+2017-09-19 13:52:46,709 INFO  [main] Testing main page content
+2017-09-19 13:53:01,356 INFO  [main] All classes initialized
+2017-09-19 13:53:01,357 INFO  [main] Testing simulator page content
+2017-09-19 13:53:15,885 INFO  [main] All classes initialized
+2017-09-19 13:53:15,885 INFO  [main] Testing main page links
+2017-09-19 13:53:27,764 INFO  [main] All classes initialized
+2017-09-19 13:53:27,765 INFO  [main] Testing theory page content
+2017-09-19 13:53:42,448 INFO  [main] All classes initialized
+2017-09-19 13:53:42,448 INFO  [main] Testing simulator page links
